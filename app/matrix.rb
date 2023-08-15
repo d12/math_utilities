@@ -9,7 +9,7 @@ class Matrix
         end
       end
     else
-      raise "Matrices have different dimensions"
+      raise ArgumentError, "Matrices have different dimensions"
     end
   end
 end
