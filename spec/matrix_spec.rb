@@ -1,35 +1,24 @@
-require "rspec"
-
 require_relative "../app/matrix"
 
-describe Matrix do
-  describe ".add" do
-    it "adds two matrices" do
-      a = [[1, 2], [3, 4]]
-      b = [[2, 3], [4, 5]]
-      c = [[3, 5], [7, 9]]
-      expect(Matrix.add(a, b)).to eq(c)
+RSpec.describe Matrix do
+  describe ".dot_product" do
+    context "when given valid matrices" do
+      it "computes the dot product correctly" do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6], [7, 8]]
+        result = Matrix.dot_product(a, b)
+
+        expect(result).to eq([[19, 22], [43, 50]])
+      end
     end
 
-    it "raises an ArgumentError when matrices have different dimensions" do
-      a = [[1, 2], [3, 4]]
-      b = [[1, 2, 3], [4, 5, 6]]
-      expect{ Matrix.add(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
-    end
-  end
+    context "when given matrices with invalid dimensions" do
+      it "raises an ArgumentError" do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6, 7], [8, 9, 10]]
 
-  describe ".subtract" do
-    it "subtracts one matrix from another" do
-      a = [[1, 2], [3, 4]]
-      b = [[2, 1], [1, 2]]
-      c = [[-1, 1], [2, 2]]
-      expect(Matrix.subtract(a, b)).to eq(c)
-    end
-
-    it "raises an ArgumentError when matrices have different dimensions" do
-      a = [[1, 2], [3, 4]]
-      b = [[1, 2, 3], [4, 5, 6]]
-      expect{ Matrix.subtract(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+        expect { Matrix.dot_product(a, b) }.to raise_error(ArgumentError, "Invalid matrix dimensions")
+      end
     end
   end
 end
