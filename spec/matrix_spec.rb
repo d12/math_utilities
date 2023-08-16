@@ -12,6 +12,16 @@ RSpec.describe Matrix do
 
         expect(result).to eq(expected_result)
       end
+
+      it "returns the sum of the matrices (including test case added)" do
+        matrix1 = [[9, 8], [7, 6]]
+        matrix2 = [[5, 4], [3, 2]]
+        expected_result = [[14, 12], [10, 8]]
+
+        result = Matrix.add(matrix1, matrix2)
+
+        expect(result).to eq(expected_result)
+      end
     end
 
     context "when matrices have different dimensions" do
