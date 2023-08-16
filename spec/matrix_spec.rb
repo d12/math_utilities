@@ -69,5 +69,17 @@ RSpec.describe Matrix do
         expect { Matrix.dot_product(a, b) }.to raise_error(ArgumentError, "Matrices cannot be multiplied")
       end
     end
+
+    context "when given matrices that can be multiplied, but in different order" do
+      it "returns the dot product of the matrices" do
+        a = [[5, 6], [7, 8]]
+        b = [[1, 2], [3, 4]]
+        expected_result = [[17, 22], [23, 30]]
+
+        result = Matrix.dot_product(a, b)
+
+        expect(result).to eq(expected_result)
+      end
+    end
   end
 end
