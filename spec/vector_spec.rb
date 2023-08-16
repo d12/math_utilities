@@ -4,11 +4,11 @@ RSpec.describe Vector do
   describe ".add" do
     context "when vectors have the same dimensions" do
       it "returns the sum of the vectors" do
-        vector1 = Vector.new([1, 2, 3])
-        vector2 = Vector.new([4, 5, 6])
-        expected_result = Vector.new([5, 7, 9])
+        vector1 = [1, 2, 3]
+        vector2 = [4, 5, 6]
+        expected_result = [5, 7, 9]
 
-        result = Vector.add(vector1.elements, vector2.elements)
+        result = Vector.add(vector1, vector2)
 
         expect(result).to eq(expected_result)
       end
@@ -16,10 +16,10 @@ RSpec.describe Vector do
 
     context "when vectors have different dimensions" do
       it "raises an ArgumentError" do
-        vector1 = Vector.new([1, 2, 3])
-        vector2 = Vector.new([4, 5])
+        vector1 = [1, 2, 3]
+        vector2 = [4, 5]
 
-        expect { Vector.add(vector1.elements, vector2.elements) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
+        expect { Vector.add(vector1, vector2) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
       end
     end
   end
@@ -27,11 +27,11 @@ RSpec.describe Vector do
   describe ".subtract" do
     context "when vectors have the same dimensions" do
       it "returns the difference between the vectors" do
-        vector1 = Vector.new([5, 6, 7])
-        vector2 = Vector.new([1, 2, 3])
-        expected_result = Vector.new([4, 4, 4])
+        vector1 = [5, 6, 7]
+        vector2 = [1, 2, 3]
+        expected_result = [4, 4, 4]
 
-        result = Vector.subtract(vector1.elements, vector2.elements)
+        result = Vector.subtract(vector1, vector2)
 
         expect(result).to eq(expected_result)
       end
@@ -39,10 +39,10 @@ RSpec.describe Vector do
 
     context "when vectors have different dimensions" do
       it "raises an ArgumentError" do
-        vector1 = Vector.new([1, 2, 3])
-        vector2 = Vector.new([4, 5])
+        vector1 = [1, 2, 3]
+        vector2 = [4, 5]
 
-        expect { Vector.subtract(vector1.elements, vector2.elements) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
+        expect { Vector.subtract(vector1, vector2) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
       end
     end
   end

@@ -12,7 +12,7 @@ class Vector
     a.each_with_index do |element, index|
       result << element + b[index]
     end
-    Vector.new(result)
+    result
   end
 
   def self.subtract(a, b)
@@ -22,6 +22,6 @@ class Vector
     a.each_with_index do |element, index|
       result << element - b[index]
     end
-    Vector.new(result)
+    result
   end
 end
