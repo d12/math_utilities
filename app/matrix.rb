@@ -1,23 +1,19 @@
-class Matrix
-  # Adds two matrices together.
-  def self.add(a, b)
-    raise ArgumentError, "Matrices must have the same dimensions" if a.length != b.length || a[0].length != b[0].length
+require "matrix"
 
-    a.zip(b).map do |row_a, row_b|
-      row_a.zip(row_b).map do |col_a, col_b|
-        col_a + col_b
-      end
-    end
+class Matrix
+  def self.add(a, b)
+    matrix_a = Matrix[*a]
+    matrix_b = Matrix[*b]
+    raise ArgumentError, "Matrices must have the same dimensions" if matrix_a.row_count != matrix_b.row_count || matrix_a.column_count != matrix_b.column_count
+
+    (matrix_a + matrix_b).to_a
   end
 
-  # Subtracts one matrix from another.
   def self.subtract(a, b)
-    raise ArgumentError, "Matrices must have the same dimensions" if a.length != b.length || a[0].length != b[0].length
+    matrix_a = Matrix[*a]
+    matrix_b = Matrix[*b]
+    raise ArgumentError, "Matrices must have the same dimensions" if matrix_a.row_count != matrix_b.row_count || matrix_a.column_count != matrix_b.column_count
 
-    a.zip(b).map do |row_a, row_b|
-      row_a.zip(row_b).map do |col_a, col_b|
-        col_a - col_b
-      end
-    end
+     (matrix_a - matrix_b).to_a
   end
 end
