@@ -3,59 +3,71 @@ require_relative '../app/matrix'
 
 RSpec.describe Matrix do
   describe '.add' do
-    it 'adds two matrices together' do
-      a = [[1, 2], [3, 4]]
-      b = [[5, 6], [7, 8]]
-      expected_result = [[6, 8], [10, 12]]
+    context 'when matrices have the same dimensions' do
+      it 'returns the sum of the matrices' do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6], [7, 8]]
+        expected_result = [[6, 8], [10, 12]]
 
-      result = Matrix.add(a, b)
+        result = Matrix.add(a, b)
 
-      expect(result).to eq(expected_result)
+        expect(result).to eq(expected_result)
+      end
     end
 
-    it 'raises an error if matrices have different dimensions' do
-      a = [[1, 2], [3, 4]]
-      b = [[5, 6, 7], [8, 9, 10]]
+    context 'when matrices have different dimensions' do
+      it 'raises an ArgumentError' do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6, 7], [8, 9, 10]]
 
-      expect { Matrix.add(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+        expect { Matrix.add(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+      end
     end
   end
 
   describe '.subtract' do
-    it 'subtracts one matrix from another' do
-      a = [[1, 2], [3, 4]]
-      b = [[5, 6], [7, 8]]
-      expected_result = [[-4, -4], [-4, -4]]
+    context 'when matrices have the same dimensions' do
+      it 'returns the difference between the matrices' do
+        a = [[5, 6], [7, 8]]
+        b = [[1, 2], [3, 4]]
+        expected_result = [[4, 4], [4, 4]]
 
-      result = Matrix.subtract(a, b)
+        result = Matrix.subtract(a, b)
 
-      expect(result).to eq(expected_result)
+        expect(result).to eq(expected_result)
+      end
     end
 
-    it 'raises an error if matrices have different dimensions' do
-      a = [[1, 2], [3, 4]]
-      b = [[5, 6, 7], [8, 9, 10]]
+    context 'when matrices have different dimensions' do
+      it 'raises an ArgumentError' do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6, 7], [8, 9, 10]]
 
-      expect { Matrix.subtract(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+        expect { Matrix.subtract(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+      end
     end
   end
 
   describe '.dot_product' do
-    it 'computes the dot product of two matrices' do
-      a = [[1, 2], [3, 4]]
-      b = [[5, 6], [7, 8]]
-      expected_result = [[19, 22], [43, 50]]
+    context 'when matrices have the valid dimensions' do
+      it 'computes the dot product of the matrices' do
+        a = [[1, 2], [3, 4]]
+        b = [[5, 6], [7, 8]]
+        expected_result = [[19, 22], [43, 50]]
 
-      result = Matrix.dot_product(a, b)
+        result = Matrix.dot_product(a, b)
 
-      expect(result).to eq(expected_result)
+        expect(result).to eq(expected_result)
+      end
     end
 
-    it 'raises an error if number of columns of first matrix does not match number of rows of second matrix' do
-      a = [[1, 2, 3], [4, 5, 6]]
-      b = [[7, 8], [9, 10], [11, 12]]
+    context 'when matrices have invalid dimensions' do
+      it 'raises an ArgumentError' do
+        a = [[1, 2, 3], [4, 5, 6]]
+        b = [[7, 8], [9, 10], [11, 12]]
 
-      expect { Matrix.dot_product(a, b) }.to raise_error(ArgumentError, "Number of columns of matrix a must match number of rows of matrix b")
+        expect { Matrix.dot_product(a, b) }.to raise_error(ArgumentError, "Number of columns of matrix a must match number of rows of matrix b")
+      end
     end
   end
 end

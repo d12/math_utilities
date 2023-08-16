@@ -1,4 +1,4 @@
-```
+```ruby
 class Matrix
   # Adds two matrices together.
   def self.add(a, b)
