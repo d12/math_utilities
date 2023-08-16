@@ -1,4 +1,4 @@
-require "matrix"
+require_relative "../app/matrix"
 
 RSpec.describe Matrix do
   describe ".add" do
