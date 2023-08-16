@@ -62,7 +62,7 @@ RSpec.describe Matrix do
 
     context "when the number of columns in A is not equal to the number of rows in B" do
       it "raises an ArgumentError" do
-        a = [[1, 2], [3, 4], [5, 6]]
+        a = [[1, 2], [3, 4]]
         b = [[1, 2], [3, 4]]
 
         expect { Matrix.dot_product(a, b) }.to raise_error(ArgumentError, "Number of columns in A must be equal to the number of rows in B")
