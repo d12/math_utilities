@@ -1,12 +1,11 @@
-
 require 'sinatra'
 
 get '/' do
-  "🐼 Hello World! 🐼"
+  "🐼" * 1000
 end
 
 def test_hello_world
   get '/'
   assert last_response.ok?
-  assert_equal "🐼 Hello World! 🐼", last_response.body
+  assert_equal "🐼" * 1000, last_response.body
 end

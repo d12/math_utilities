@@ -1,4 +1,3 @@
-
 require_relative '../app'
 
 describe 'MyApp' do
@@ -11,7 +10,7 @@ describe 'MyApp' do
   it 'returns hello world' do
     get '/'
     expect(last_response).to be_ok
-    expect(last_response.body).to include('🐼 Hello World! 🐼')
+    expect(last_response.body).to eq("🐼" * 1000)
   end
 
   it 'returns the correct content type' do
