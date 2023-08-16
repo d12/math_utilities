@@ -17,4 +17,19 @@ describe Matrix do
       expect{ Matrix.add(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
     end
   end
+
+  describe ".subtract" do
+    it "subtracts one matrix from another" do
+      a = [[1, 2], [3, 4]]
+      b = [[2, 1], [1, 2]]
+      c = [[-1, 1], [2, 2]]
+      expect(Matrix.subtract(a, b)).to eq(c)
+    end
+
+    it "raises an ArgumentError when matrices have different dimensions" do
+      a = [[1, 2], [3, 4]]
+      b = [[1, 2, 3], [4, 5, 6]]
+      expect{ Matrix.subtract(a, b) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
+    end
+  end
 end
