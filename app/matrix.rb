@@ -20,4 +20,29 @@ class Matrix
       end
     end
   end
+  
+  # Computes the dot product of two matrices.
+  def self.dot_product(a, b)
+    raise ArgumentError, "Matrices cannot be multiplied" if a[0].length != b.length
+    
+    result = []
+    
+    (0...a.length).each do |i|
+      row = []
+      
+      (0...b[0].length).each do |j|
+        sum = 0
+        
+        (0...b.length).each do |k|
+          sum += a[i][k] * b[k][j]
+        end
+        
+        row << sum
+      end
+      
+      result << row
+    end
+    
+    result
+  end
 end
