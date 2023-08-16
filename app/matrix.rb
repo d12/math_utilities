@@ -1,3 +1,4 @@
+```ruby
 class Matrix
   # Adds two matrices together.
   def self.add(a, b)
@@ -23,7 +24,7 @@ class Matrix
   
   # Computes the dot product of two matrices.
   def self.dot_product(a, b)
-    raise ArgumentError, "Matrices cannot be multiplied" if b.length != a[0].length
+    raise ArgumentError, "Matrices cannot be multiplied" if a[0].length != b.length || a.length != b[0].length
     
     result = []
     
@@ -46,3 +47,4 @@ class Matrix
     result
   end
 end
+```
