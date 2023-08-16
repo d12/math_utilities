@@ -20,4 +20,21 @@ class Matrix
       end
     end
   end
+
+  # Computes the dot product of two matrices.
+  def self.dot_product(a, b)
+    raise ArgumentError, "Number of columns in A must be equal to the number of rows in B" if a[0].length != b.length
+
+    result = Array.new(a.length) { Array.new(b[0].length, 0) }
+
+    (0...a.length).each do |i|
+      (0...b[0].length).each do |j|
+        (0...a[0].length).each do |k|
+          result[i][j] += a[i][k] * b[k][j]
+        end
+      end
+    end
+
+    result
+  end
 end
