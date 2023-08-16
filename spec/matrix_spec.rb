@@ -18,7 +18,7 @@ RSpec.describe Matrix do
       let(:matrix2) { [[5, 6, 7], [8, 9, 10]] }
       
       it "raises an ArgumentError" do
-        expect{ Matrix.dot_product(matrix1, matrix2) }.to raise_error(ArgumentError)
+        expect{ Matrix.dot_product(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must be compatible for dot product")
       end
     end
   end
