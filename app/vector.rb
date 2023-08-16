@@ -1,9 +1,4 @@
 class Vector
-  attr_reader :elements
-
-  def initialize(elements)
-    @elements = elements
-  end
 
   def self.add(a, b)
     raise ArgumentError, "Vectors must have the same dimensions" if a.length != b.length
