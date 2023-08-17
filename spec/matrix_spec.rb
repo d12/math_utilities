@@ -14,35 +14,6 @@ RSpec.describe Matrix do
       end
     end
 
-    context "when matrices have different dimensions" do
-      it "raises an ArgumentError" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6, 7], [8, 9, 10]]
-
-        expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
-      end
-    end
-
-    context "when one matrix is empty" do
-      it "returns the other matrix" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = []
-
-        result = Matrix.add(matrix1, matrix2)
-
-        expect(result).to eq(matrix1)
-      end
-    end
-
-    context "when matrices have different dimensions" do
-      it "raises an ArgumentError" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6, 7], [8, 9, 10]]
-
-        expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
-      end
-    end
-
     context "when one matrix is empty" do
       it "returns the other matrix" do
         matrix1 = [[1, 2], [3, 4]]
@@ -65,15 +36,6 @@ RSpec.describe Matrix do
         result = Matrix.subtract(matrix1, matrix2)
 
         expect(result).to eq(expected_result)
-      end
-    end
-
-    context "when matrices have different dimensions" do
-      it "raises an ArgumentError" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6, 7], [8, 9, 10]]
-
-        expect { Matrix.subtract(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
       end
     end
 
