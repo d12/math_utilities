@@ -46,4 +46,13 @@ RSpec.describe Vector do
       expect(result).to eq(expected_result)
     end
   end
+
+  describe "#initialize" do
+    it "correctly initializes the vector with given coordinates" do
+      vector = Vector.new(3, 4)
+
+      expect(vector.x).to eq(3)
+      expect(vector.y).to eq(4)
+    end
+  end
 end
