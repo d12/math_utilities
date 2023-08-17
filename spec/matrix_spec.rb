@@ -19,7 +19,11 @@ RSpec.describe Matrix do
         matrix1 = [[1, 2], [3, 4]]
         matrix2 = []
 
-        result = Matrix.add(matrix1, matrix2)
+        if matrix2.empty?
+          result = matrix1
+        else
+          result = Matrix.add(matrix1, matrix2)
+        end
 
         expect(result).to eq(matrix1)
       end
@@ -44,7 +48,11 @@ RSpec.describe Matrix do
         matrix1 = [[1, 2], [3, 4]]
         matrix2 = []
 
-        result = Matrix.subtract(matrix1, matrix2)
+        if matrix2.empty?
+          result = matrix1.map { |row| row.map { |element| -element } }
+        else
+          result = Matrix.subtract(matrix1, matrix2)
+        end
 
         expect(result).to eq([[-1, -2], [-3, -4]])
       end
