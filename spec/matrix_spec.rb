@@ -22,6 +22,17 @@ RSpec.describe Matrix do
         expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
       end
     end
+    
+    context "when one matrix is empty" do
+      it "returns the non-empty matrix" do
+        matrix1 = [[1, 2], [3, 4]]
+        matrix2 = []
+
+        result = Matrix.add(matrix1, matrix2)
+
+        expect(result).to eq(matrix1)
+      end
+    end
   end
 
   describe ".subtract" do
