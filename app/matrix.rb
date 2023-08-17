@@ -1,35 +1,23 @@
 class Matrix
-  def self.add(matrix1, matrix2)
-    unless matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length
-      raise ArgumentError, "Matrices must have the same dimensions"
-    end
+  # Adds two matrices together.
+  def self.add(a, b)
+    raise ArgumentError, "Matrices must have the same dimensions" if a.length != b.length || a[0].length != b[0].length
 
-    result = []
-    matrix1.length.times do |i|
-      row = []
-      matrix1[i].length.times do |j|
-        row << matrix1[i][j] + matrix2[i][j]
+    a.zip(b).map do |row_a, row_b|
+      row_a.zip(row_b).map do |col_a, col_b|
+        col_a + col_b
       end
-      result << row
     end
-
-    result
   end
 
-  def self.subtract(matrix1, matrix2)
-    unless matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length
-      raise ArgumentError, "Matrices must have the same dimensions"
-    end
+  # Subtracts one matrix from another.
+  def self.subtract(a, b)
+    raise ArgumentError, "Matrices must have the same dimensions" if a.length != b.length || a[0].length != b[0].length
 
-    result = []
-    matrix1.length.times do |i|
-      row = []
-      matrix1[i].length.times do |j|
-        row << matrix1[i][j] - matrix2[i][j]
+    a.zip(b).map do |row_a, row_b|
+      row_a.zip(row_b).map do |col_a, col_b|
+        col_a - col_b
       end
-      result << row
     end
-
-    result
   end
 end
