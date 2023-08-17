@@ -20,4 +20,22 @@ class Matrix
       end
     end
   end
+
+  def self.multiply(a, b)
+    raise ArgumentError, "Number of columns in the first matrix should be equal to the number of rows in the second matrix" if a[0].length != b.length
+  
+    result = Array.new(a.length) { Array.new(b[0].length, 0) }
+  
+    a.each_with_index do |row_a, i|
+      b[0].length.times do |j|
+        result[i][j] = row_a.enum_for(:each_with_index).sum { |col_a, k| col_a * b[k][j] }
+      end
+    end
+  
+    result
+  end
+
+  def self.transpose(matrix)
+    matrix.transpose
+  end
 end
