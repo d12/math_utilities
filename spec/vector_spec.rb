@@ -1,49 +1,49 @@
 require_relative "../app/vector"
 
 RSpec.describe Vector do
-  describe ".add" do
-    context "when vectors have the same dimensions" do
-      it "returns the sum of the vectors" do
-        vector1 = [1, 2, 3]
-        vector2 = [4, 5, 6]
-        expected_result = [5, 7, 9]
+  describe "#magnitude" do
+    it "returns the magnitude of the vector" do
+      vector = Vector.new(3, 4)
 
-        result = Vector.add(vector1, vector2)
+      result = vector.magnitude
 
-        expect(result).to eq(expected_result)
-      end
-    end
-
-    context "when vectors have different dimensions" do
-      it "raises an ArgumentError" do
-        vector1 = [1, 2, 3]
-        vector2 = [4, 5]
-
-        expect { Vector.add(vector1, vector2) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
-      end
+      expect(result).to eq(5)
     end
   end
 
-  describe ".subtract" do
-    context "when vectors have the same dimensions" do
-      it "returns the difference between the vectors" do
-        vector1 = [5, 6, 7]
-        vector2 = [1, 2, 3]
-        expected_result = [4, 4, 4]
+  describe "#normalize" do
+    it "returns a normalized vector" do
+      vector = Vector.new(3, 4)
+      expected_result = Vector.new(0.6, 0.8)
 
-        result = Vector.subtract(vector1, vector2)
+      result = vector.normalize
 
-        expect(result).to eq(expected_result)
-      end
+      expect(result.x).to be_within(0.001).of(expected_result.x)
+      expect(result.y).to be_within(0.001).of(expected_result.y)
     end
+  end
 
-    context "when vectors have different dimensions" do
-      it "raises an ArgumentError" do
-        vector1 = [1, 2, 3]
-        vector2 = [4, 5]
+  describe "#dot_product" do
+    it "returns the dot product of two vectors" do
+      vector1 = Vector.new(2, 3)
+      vector2 = Vector.new(4, -1)
+      expected_result = 5
 
-        expect { Vector.subtract(vector1, vector2) }.to raise_error(ArgumentError, "Vectors must have the same dimensions")
-      end
+      result = vector1.dot_product(vector2)
+
+      expect(result).to eq(expected_result)
+    end
+  end
+
+  describe "#cross_product" do
+    it "returns the cross product of two vectors" do
+      vector1 = Vector.new(2, 3)
+      vector2 = Vector.new(4, -1)
+      expected_result = -11
+
+      result = vector1.cross_product(vector2)
+
+      expect(result).to eq(expected_result)
     end
   end
 end

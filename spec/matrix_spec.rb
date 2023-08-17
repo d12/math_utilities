@@ -46,4 +46,25 @@ RSpec.describe Matrix do
       end
     end
   end
+
+  context "when matrices have the same dimensions" do
+    it "returns the product of the matrices" do
+      matrix1 = [[2, 3], [4, 5]]
+      matrix2 = [[2, 3], [4, 5]]
+      expected_result = [[10, 15], [20, 25]]
+
+      result = Matrix.multiply(matrix1, matrix2)
+
+      expect(result).to eq(expected_result)
+    end
+  end
+
+  context "when matrices are not compatible for multiplication" do
+    it "raises an ArgumentError" do
+      matrix1 = [[2, 3, 4], [5, 6, 7]]
+      matrix2 = [[2, 3], [4, 5]]
+
+      expect { Matrix.multiply(matrix1, matrix2) }.to raise_error(ArgumentError, "Incompatible matrices for multiplication")
+    end
+  end
 end
