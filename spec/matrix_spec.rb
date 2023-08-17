@@ -28,9 +28,7 @@ RSpec.describe Matrix do
         matrix1 = [[1, 2], [3, 4]]
         matrix2 = []
 
-        result = Matrix.add(matrix1, matrix2)
-
-        expect(result).to eq(matrix1)
+        raise "Implement the test case"
       end
     end
   end
