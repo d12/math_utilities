@@ -20,4 +20,21 @@ class Matrix
       end
     end
   end
+
+  # Multiplies two matrices together.
+  def self.multiply(a, b)
+    raise ArgumentError, "Cannot multiply matrices with incompatible dimensions" if a[0].length != b.length
+
+    result = Array.new(a.length) { Array.new(b[0].length, 0) }
+
+    (0...a.length).each do |row|
+      (0...b[0].length).each do |col|
+        (0...b.length).each do |i|
+          result[row][col] += a[row][i] * b[i][col]
+        end
+      end
+    end
+
+    result
+  end
 end
