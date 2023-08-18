@@ -35,5 +35,3 @@ test 'when adding two matrices, it returns the correct result' do
   assert_equal(expected_result, result)
 end
 ######################
-
-DO NOT CHANGE ANY OTHER PARTS OF THE CODE!
