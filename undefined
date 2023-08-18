@@ -1,0 +1,4 @@
+{
+  "filename": "spec/matrix_spec.rb",
+  "descriptionOfChanges": "Add a new test case to ensure the Matrix.add method handles matrices of different sizes correctly. The test case should define input matrices of different sizes and their expected sum. It should then call the Matrix.add method with the input matrices and assert that the returned value matches the expected sum.\n\n```ruby\ncontext 'when matrices have different dimensions' do\n  it 'raises an ArgumentError' do\n    matrix1 = [[1, 2], [3, 4]]\n    matrix2 = [[5, 6, 7], [8, 9, 10]]\n\n    expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, 'Matrices must have the same dimensions')\n  end\nend\n```\n"
+}
