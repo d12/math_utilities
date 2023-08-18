@@ -22,6 +22,18 @@ RSpec.describe Matrix do
         expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
       end
     end
+
+    context "when matrices contain negative numbers" do
+      it "returns the sum of the matrices with negative numbers" do
+        matrix1 = [[-1, -2], [-3, -4]]
+        matrix2 = [[-5, -6], [-7, -8]]
+        expected_result = [[-6, -8], [-10, -12]]
+
+        result = Matrix.add(matrix1, matrix2)
+
+        expect(result).to eq(expected_result)
+      end
+    end
   end
 
   describe ".subtract" do
