@@ -46,4 +46,16 @@ RSpec.describe Matrix do
       end
     end
   end
+
+  describe ".multiply" do
+    context "when matrices can be multiplied" do
+      it "returns the product of the matrices" do
+      end
+    end
+
+    context "when matrices cannot be multiplied" do
+      it "raises an ArgumentError" do
+      end
+    end
+  end
 end
