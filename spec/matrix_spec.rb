@@ -7,9 +7,16 @@ RSpec.describe Matrix do
         matrix1 = [[1, 2], [3, 4]]
         matrix2 = [[5, 6], [7, 8]]
         expected_result = [[6, 8], [10, 12]]
-
         result = Matrix.add(matrix1, matrix2)
+        expect(result).to eq(expected_result)
+      end
 
+      # New test case
+      it "returns the sum of the matrices for different input matrices" do
+        a = [[2, 3], [4, 5]]
+        b = [[6, 7], [8, 9]]
+        expected_result = [[8, 10], [12, 14]]
+        result = Matrix.add(a, b)
         expect(result).to eq(expected_result)
       end
     end
