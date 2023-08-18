@@ -20,4 +20,29 @@ class Matrix
       end
     end
   end
+  
+  # Computes the dot product of two matrices.
+  def self.dot_product(a, b)
+    raise ArgumentError, "Matrices must have compatible dimensions" if a[0].length != b.length
+    
+    result = []
+    
+    a.each do |row_a|
+      row_result = []
+      
+      b.transpose.each do |col_b|
+        dot_product = 0
+        
+        row_a.each_with_index do |elem_a, i|
+          dot_product += elem_a * col_b[i]
+        end
+        
+        row_result << dot_product
+      end
+      
+      result << row_result
+    end
+    
+    result
+  end
 end

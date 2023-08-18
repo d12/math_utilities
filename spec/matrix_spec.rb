@@ -46,4 +46,27 @@ RSpec.describe Matrix do
       end
     end
   end
+
+  describe ".dot_product" do
+    context "when matrices have compatible dimensions" do
+      it "returns the dot product of the matrices" do
+        matrix1 = [[1, 2], [3, 4]]
+        matrix2 = [[5, 6], [7, 8]]
+        expected_result = [[19, 22], [43, 50]]
+
+        result = Matrix.dot_product(matrix1, matrix2)
+
+        expect(result).to eq(expected_result)
+      end
+    end
+  end
+
+  context "when matrices have incompatible dimensions" do
+    it "raises an ArgumentError" do
+      matrix1 = [[1, 2], [3, 4]]
+      matrix2 = [[5, 6, 7], [8, 9, 10]]
+
+      expect { Matrix.dot_product(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have compatible dimensions for dot product")
+    end
+  end
 end
