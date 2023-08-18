@@ -20,4 +20,21 @@ class Matrix
       end
     end
   end
+
+  # Computes the dot product of two matrices.
+  def self.dot_product(a, b)
+    raise ArgumentError, "Incompatible dimensions for dot product calculation" if a[0].length != b.length
+
+    result = Array.new(a.length) { Array.new(b[0].length, 0) }
+
+    a.length.times do |i|
+      b[0].length.times do |j|
+        a[0].length.times do |k|
+          result[i][j] += a[i][k] * b[k][j]
+        end
+      end
+    end
+
+    result
+  end
 end
