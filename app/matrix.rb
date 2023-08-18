@@ -1,7 +1,7 @@
 class Matrix
   # Adds two matrices together.
   def self.add(a, b)
-    return nil if a.length != b.length || a[0].length != b[0].length
+    raise ArgumentError, 'Matrices must have the same dimensions' if a.length != b.length || a[0].length != b[0].length
 
     a.zip(b).map do |row_a, row_b|
       row_a.zip(row_b).map do |col_a, col_b|
@@ -12,7 +12,7 @@ class Matrix
 
   # Subtracts one matrix from another.
   def self.subtract(a, b)
-    raise ArgumentError, "Matrices must have the same dimensions" if a.length != b.length || a[0].length != b[0].length
+    raise ArgumentError, 'Matrices must have the same dimensions' if a.length != b.length || a[0].length != b[0].length
 
     a.zip(b).map do |row_a, row_b|
       row_a.zip(row_b).map do |col_a, col_b|
@@ -25,13 +25,13 @@ end
 ######################
 
 ## NEW TEST CASE ##
-test 'when adding two matrices with different dimensions, it returns nil' do
+test 'when adding two matrices with different dimensions, it raises an ArgumentError' do
   matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
   matrix2 = [[9, 8, 7], [6, 5, 4]]
   expected_result = nil
 
-  result = Matrix.add(matrix1, matrix2)
-
-  assert_equal(expected_result, result)
+  assert_raises(ArgumentError, 'Matrices must have the same dimensions') do
+    Matrix.add(matrix1, matrix2)
+  end
 end
 ######################
