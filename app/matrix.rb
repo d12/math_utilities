@@ -37,4 +37,28 @@ class Matrix
 
     result
   end
+
+  # Test cases for dot_product method
+  def self.test_dot_product
+    # Test case with compatible dimensions
+    a = [[1, 2], [3, 4]]
+    b = [[5, 6], [7, 8]]
+    expected_result = [[19, 22], [43, 50]]
+    raise "Test Failed!" if dot_product(a, b) != expected_result
+
+    # Test case with incompatible dimensions
+    c = [[1, 2, 3], [4, 5, 6]]
+    d = [[1, 2], [3, 4]]
+    begin
+      dot_product(c, d)
+    rescue ArgumentError => e
+      raise "Test Failed!" unless e.message == "Incompatible dimensions for dot product calculation"
+    end
+
+    # Add additional edge cases test here...
+
+    puts "All test cases passed!"
+  end
 end
+
+Matrix.test_dot_product
