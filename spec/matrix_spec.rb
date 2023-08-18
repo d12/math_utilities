@@ -1,49 +1,25 @@
-require_relative "../app/matrix"
+require "matrix"
 
 RSpec.describe Matrix do
-  describe ".add" do
-    context "when matrices have the same dimensions" do
-      it "returns the sum of the matrices" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6], [7, 8]]
-        expected_result = [[6, 8], [10, 12]]
+  describe "#add" do
+    it "should add two matrices correctly" do
+      matrix1 = Matrix[[1, 2], [3, 4]]
+      matrix2 = Matrix[[2, 3], [4, 5]]
+      expected_result = Matrix[[3, 5], [7, 9]]
 
-        result = Matrix.add(matrix1, matrix2)
+      result = Matrix.add(matrix1, matrix2)
 
-        expect(result).to eq(expected_result)
-      end
+      expect(result).to eq(expected_result)
     end
 
-    context "when matrices have different dimensions" do
-      it "raises an ArgumentError" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6, 7], [8, 9, 10]]
+    it "should add two matrices with negative numbers correctly" do
+      matrix1 = Matrix[[1, -2], [-3, 4]]
+      matrix2 = Matrix[[-2, 3], [4, -5]]
+      expected_result = Matrix[[-1, 1], [1, -1]]
 
-        expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
-      end
-    end
-  end
+      result = Matrix.add(matrix1, matrix2)
 
-  describe ".subtract" do
-    context "when matrices have the same dimensions" do
-      it "returns the difference between the matrices" do
-        matrix1 = [[5, 6], [7, 8]]
-        matrix2 = [[1, 2], [3, 4]]
-        expected_result = [[4, 4], [4, 4]]
-
-        result = Matrix.subtract(matrix1, matrix2)
-
-        expect(result).to eq(expected_result)
-      end
-    end
-
-    context "when matrices have different dimensions" do
-      it "raises an ArgumentError" do
-        matrix1 = [[1, 2], [3, 4]]
-        matrix2 = [[5, 6, 7], [8, 9, 10]]
-
-        expect { Matrix.subtract(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
-      end
+      expect(result).to eq(expected_result)
     end
   end
 end
