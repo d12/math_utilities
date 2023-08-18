@@ -22,6 +22,18 @@ RSpec.describe Matrix do
         expect { Matrix.add(matrix1, matrix2) }.to raise_error(ArgumentError, "Matrices must have the same dimensions")
       end
     end
+
+    context "when matrices have different dimensions" do
+      it "returns the sum of the matrices" do
+        matrix1 = [[2, 4], [6, 8]]
+        matrix2 = [[1, 3], [5, 7]]
+        expected_result = [[3, 7], [11, 15]]
+
+        result = Matrix.add(matrix1, matrix2)
+
+        expect(result).to eq(expected_result)
+      end
+    end
   end
 
   describe ".subtract" do
