@@ -20,16 +20,20 @@ class Matrix
       end
     end
   end
-
-  #### NEW TEST CASE ####
-  test 'when adding two matrices, it returns the correct result' do
-    matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    matrix2 = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
-    expected_result = [[10, 10, 10], [10, 10, 10], [10, 10, 10]]
-
-    result = Matrix.add(matrix1, matrix2)
-
-    assert_equal(expected_result, result)
-  end
-  ######################
 end
+
+######################
+
+## NEW TEST CASE ##
+test 'when adding two matrices, it returns the correct result' do
+  matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  matrix2 = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
+  expected_result = [[10, 10, 10], [10, 10, 10], [10, 10, 10]]
+
+  result = Matrix.add(matrix1, matrix2)
+
+  assert_equal(expected_result, result)
+end
+######################
+
+DO NOT CHANGE ANY OTHER PARTS OF THE CODE!
