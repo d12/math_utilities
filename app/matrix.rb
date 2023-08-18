@@ -20,42 +20,29 @@ class Matrix
       end
     end
   end
+end
 
+require_relative 'matrix.rb'
+
+RSpec.describe Matrix do
   describe 'dot_product' do
     it 'should compute the dot product correctly with compatible dimensions' do
       # Test case with compatible dimensions
       a = [[1, 2], [3, 4]]
       b = [[5, 6], [7, 8]]
       expected_result = [[19, 22], [43, 50]]
-      expect(dot_product(a, b)).to eq(expected_result)
+      expect(Matrix.dot_product(a, b)).to eq(expected_result)
     end
 
     it 'should raise ArgumentError for incompatible dimensions' do
       # Test case with incompatible dimensions
       c = [[1, 2, 3], [4, 5, 6]]
       d = [[1, 2], [3, 4]]
-      expect { dot_product(c, d) }.to raise_error(ArgumentError, "Incompatible dimensions for dot product calculation")
+      expect { Matrix.dot_product(c, d) }.to raise_error(ArgumentError, "Incompatible dimensions for dot product calculation")
     end
 
     # Add additional edge cases test here...
 
-  end
-
-  # Computes the dot product of two matrices.
-  def self.dot_product(a, b)
-    raise ArgumentError, "Incompatible dimensions for dot product calculation" if a[0].length != b.length
-
-    result = Array.new(a.length) { Array.new(b[0].length, 0) }
-
-    a.length.times do |i|
-      b[0].length.times do |j|
-        a[0].length.times do |k|
-          result[i][j] += a[i][k] * b[k][j]
-        end
-      end
-    end
-
-    result
   end
 end
 
