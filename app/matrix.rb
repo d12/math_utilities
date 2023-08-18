@@ -23,7 +23,7 @@ class Matrix
   
   # Computes the dot product of two matrices.
   def self.dot_product(a, b)
-    raise ArgumentError, "Matrices must have compatible dimensions" if a[0].length != b.length
+    raise ArgumentError, "Matrices must have compatible dimensions for dot product" if a[0].length != b.length
     
     result = []
     
